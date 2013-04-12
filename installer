@@ -28,4 +28,4 @@ if [ "$COMMAND" != "uninstall" ]; then
   COMMAND="install"
 fi
 
-git clone https://github.com/ShogunPanda/zishamnium -q -- ${DESTDIR} && cd "${DESTDIR}" && sudo rake "${COMMAND}[true]" && rm -rf "${DESTDIR}"
+git clone https://github.com/ShogunPanda/zishamnium -q -- "${DESTDIR}" && cd "${DESTDIR}" && sudo rake "${COMMAND}[true]" && rm -rf "${DESTDIR}"
