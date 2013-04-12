@@ -10,7 +10,7 @@ https://github.com/ShogunPanda/zishamnium
 
 Just type the following in a shell and you're done!
 
-`curl -L http://sw.cow.tc/zishamnium/installer | zsh -s --install`
+`curl -L http://sw.cow.tc/zishamnium/installer | zsh -s -- install`
 
 ## Uninstall
 
