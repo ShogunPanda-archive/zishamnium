@@ -21,7 +21,6 @@ if [ ! -d ~/.oh-my-zsh ]; then
 fi
 
 COMMAND="$1"
-echo $1
 DESTDIR=/tmp/zishamnium-$(date +%Y%m%d%H%M%S)
 
 if [ "$COMMAND" != "uninstall" ]; then
