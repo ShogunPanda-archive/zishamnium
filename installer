@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+#
+# This file is part of zishamnium. Copyright (C) 2013 and above Shogun <shogun_panda@me.com>.
+# Licensed under the MIT license, which can be found at http://www.opensource.org/licenses/mit-license.php.
+#
+
+if [ -z "$ZSH_VERSION" ]; then
+  echo "zishamnium works only for ZSH. For other shell you might consider shamnium."
+  return 1
+fi
+
+autoload is-at-least
+if ! is-at-least 4.3.9; then
+  echo "zishamnium requires at least ZSH 4.3.9 required (you have $ZSH_VERSION)."
+  return 1
+fi
+
+if [ ! -d ~/.oh-my-zsh ]; then
+  echo "zishamnium requires oh-my-zsh."
+  return 1
+fi
+
+COMMAND="$1"
+DESTDIR=/tmp/zishamnium-$(date +%Y%m%d%H%M%S)
+
+if [ "$COMMAND" != "uninstall" ]; then
+  COMMAND="install"
+fi
+
+git clone https://github.com/ShogunPanda/zishamnium -q -- $DESTDIR && cd $DESTDIR && sudo rake $COMMAND[true] && rm -rf $DESTDIR
