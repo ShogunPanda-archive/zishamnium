@@ -28,7 +28,7 @@ task :install do |task|
 	FileUtils.chmod_R(0755, FileList[root], :verbose => !quiet)
 
 	# Add symlinks 
-	FileUtils.ln_sf("#{root}/plugin.zsh", "#{ohmyzsh}/custom/plugins/zishamnium.plugin.zsh", :verbose => !quiet)
+	FileUtils.ln_sf("#{root}/plugin.zsh", "#{ohmyzsh}/custom/plugins/zishamnium/zishamnium.plugin.zsh", :verbose => !quiet)
 	FileUtils.ln_sf("#{root}/theme.zsh-theme", "#{ohmyzsh}/themes/zishamnium.zsh-theme", :verbose => !quiet)
 
 	puts "zishamnium plugin and theme have been installed. Enabling plugin and theme is left to you. Enjoy! ;)"
