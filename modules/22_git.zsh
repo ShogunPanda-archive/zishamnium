@@ -10,16 +10,12 @@ if [ "$(which git)" != "" ]; then
   git config --global alias.task '! git bn | sed -E "s/(.+)-([0-9]+)$/\2/g"'
 fi
 
-git_prompt(){
+git_branch(){
   local branch=$(git bn 2>/dev/null)
+  [ ! -z "${branch}" ] && echo "${branch}"
+}
 
-  if [ ! -z "$branch" ]; then
-    local revision=$(git rev-parse --short HEAD 2>/dev/null)
-
-    if [ ! -z "$revision" ]; then
-      echo "${branch}@${revision}"
-    else
-      echo "${branch}"
-    fi
-  fi
+git_commit(){
+  local commit=$(git rev-parse --short HEAD 2>/dev/null)
+  [ ! -z "${commit}" ] && echo "${commit}"
 }

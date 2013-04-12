@@ -6,6 +6,6 @@
 
 [ -f ${rvm_path}/scripts/rvm ] && source ${rvm_path}/scripts/rvm;
 
-rvm_prompt(){
+rvm_current(){
   [ "$(which rvm-prompt)" != "" -a "$(rvm-prompt i)" != "" ] && rvm-prompt i v g
 }

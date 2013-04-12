@@ -13,37 +13,39 @@ local prompt_number="%h"
 local prompt_type="%#"
 
 # SET USERNAME PROMPT COLOR
-local prompt_username_color="$fg[green]"
-[ "$UID" = "0" ] && prompt_username_color="$fg[red]"
+local prompt_username_color="$fg_bold[green]"
+[ "$UID" = "0" ] && prompt_username_color="$fg_bold[red]"
 
 # SET RVM PROMPT
 prompt_rvm(){
-  local rvm="$(rvm_prompt)"
+  local rvm="$(rvm_current)"
   [ ! -z "${rvm}" ] && rvm=" ${rvm}"
   echo "${rvm}"
 }
 
 # SET GIT PROMPT
 prompt_git(){
-  local git="$(git_prompt)"
+  local git="$(git_branch)"
 
   if [ ! -z "${git}" ]; then    
+    local git_commit=$(git_commit)
     local git_status=$(parse_git_dirty)
-    local git_status_color="$fg[green]"
-    [ "${git_status}" = "${ZSH_THEME_GIT_PROMPT_DIRTY}" ] && git_status_color="$fg[red]"
+    local git_status_color="$fg_bold[green]"
 
-    git=" %{$fg[magenta]%}($git%{$fg[magenta]%})%{$reset_color%} %{$git_status_color%}${git_status}%{$reset_color%}"
+    [ "${git_status}" = "${ZSH_THEME_GIT_PROMPT_DIRTY}" ] && git_status_color="$fg[red]"
+    [ ! -z "${git_commit}" ] && git_commit="%{$fg_no_bold[magenta]%} ${git_commit}"
+    git=" %{$fg_bold[magenta]%}(${git}%{$fg[magenta]%}${git_commit}%{$fg_bold[magenta]%})%{$reset_color%} %{$git_status_color%}${git_status}%{$reset_color%}"
   fi
 
   echo "$git"
 }
 
 # # SET THE PROMPT
-PROMPT='%{$terminfo[bold]$fg[yellow]%}[%{$fg[white]%}${prompt_date}%{$fg[yellow]%}] %{$fg[blue]%}$prompt_dir %{$fg[magenta]%}$(prompt_git)%{$reset_color%}
-%{$terminfo[bold]$fg[yellow]%}[%{$prompt_username_color%}${prompt_username}@${prompt_hostname}%{$fg[red]%}$(prompt_rvm)%{$terminfo[bold]$fg[yellow]%}] ${prompt_type}>%{$reset_color%} '
+PROMPT='$fg[yellow]%}[%{$fg_bold[white]%}${prompt_date}%{$fg[yellow]%}] %{$fg_bold[blue]%}$prompt_dir $(prompt_git)%{$reset_color%}
+%{$fg[yellow]%}[%{$prompt_username_color%}${prompt_username}@${prompt_hostname}%{$fg_no_bold[red]%}$(prompt_rvm)%{$fg[yellow]%}] ${prompt_type}>%{$reset_color%} '
 
 RPS1="${return_code}"
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[magenta]%}("
-ZSH_THEME_GIT_PROMPT_SUFFIX=")%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX=" %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="✔"
 ZSH_THEME_GIT_PROMPT_DIRTY="✗"
