@@ -4,4 +4,5 @@
 # Licensed under the MIT license, which can be found at http://www.opensource.org/licenses/mit-license.php.
 #
 
-export ZISHAMNIUM_VERSION="1.0.3"
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
