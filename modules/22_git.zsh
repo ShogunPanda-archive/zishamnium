@@ -19,3 +19,5 @@ git_commit(){
   local commit=$(git rev-parse --short HEAD 2>/dev/null)
   [ ! -z "${commit}" ] && echo "${commit}"
 }
+
+unalias g
