@@ -102,18 +102,19 @@ function t {
 		dst="`pwd`"
 	elif [[ "$1" == "-" || "$1" == ".." || "$1" == '~' ||  "$1" == '/' ]]; then 
 		dst="$1";
+		shift
 	else 
 		dst="$(eval $(echo echo $(echo \$DIR_$1)))"
+		shift
 	fi
 	
-	shift
 	osascript > /dev/null 2>&1 <<APPLESCRIPT
+		tell application "System Events"
+			tell process "Terminal" to keystroke "t" using command down
+		end tell
 		tell application "Terminal"
-			tell application "System Events"
-				tell process "Terminal" to keystroke "t" using command down
-				delay 0.1
-				keystroke "cd $dst; $*\n"
-			end tell
+			activate
+			do script with command "cd $dst" in window 1
 		end tell
 APPLESCRIPT
 }
@@ -206,16 +207,18 @@ function _purge_line {
 	fi
 }
 
-# bind completion command for o g,p,d to _comp
+# bind completion command for o g,p,d,t to _comp
 if [ $ZSH_VERSION ]; then
 	compctl -K _compzsh o
 	compctl -K _compzsh g
 	compctl -K _compzsh _p
 	compctl -K _compzsh d
+	compctl -K _compzsh t
 else
 	shopt -s progcomp
 	complete -F _comp o
 	complete -F _comp g
 	complete -F _comp _p
 	complete -F _comp d
+	complete -F _comp t
 fi

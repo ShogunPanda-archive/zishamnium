@@ -5,5 +5,6 @@
 #
 
 EDITOR="nano"
-
 export EDITOR
+
+unsetopt AUTO_NAME_DIRS

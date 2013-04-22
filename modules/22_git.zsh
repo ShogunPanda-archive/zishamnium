@@ -20,4 +20,6 @@ git_commit(){
   [ ! -z "${commit}" ] && echo "${commit}"
 }
 
+# This is to ensure bashmarks behavior
 unalias g
+compdef -d g

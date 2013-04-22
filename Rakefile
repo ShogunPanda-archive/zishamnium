@@ -14,7 +14,7 @@ quiet = (ENV["ZISHAMNIUM_QUIET"] =~ /^(1|on|true|yes|t|y)$/i)
 
 
 external_scripts = {
-	"bashmarks" => ["71_bashmark", "https://raw.github.com/Bilalh/bashmarks/master/bashmarks.sh"],
+	"bashmarks" => ["71_bashmark", "https://raw.github.com/parroty/bashmarks/master/bashmarks.sh"],
 	"git-completion" => ["72_git_completion", "https://raw.github.com/git/git/master/contrib/completion/git-completion.bash"]
 }
 
@@ -46,7 +46,7 @@ namespace :external do
 		script_arg = args[:name].to_s
 
 		raise RuntimeError.new("You have to specify the name of script to update. Valid scripts are: #{external_scripts.keys.join(", ")}.") if script_arg.strip.length == 0
-		raise RuntimeError.new("External script #{script} is not valid. Valid scripts are: #{external_scripts.keys.join(", ")}.") if !external_scripts[script_arg]
+		raise RuntimeError.new("External script #{script_arg} is not valid. Valid scripts are: #{external_scripts.keys.join(", ")}.") if !external_scripts[script_arg]
 		final_script = external_scripts[script_arg]	
 
 		open(contents_directory + "/modules/#{final_script[0]}.zsh", "w", 0755) do |destination|
