@@ -12,6 +12,10 @@ Just type the following in a shell and you're done!
 
 `curl -L http://sw.cow.tc/zishamnium/installer | zsh -s -- install`
 
+### Install Git aliases
+
+`zishamnium_install_git_aliases`
+
 ## Uninstall
 
 Just type the following in a shell and you're done!
