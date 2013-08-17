@@ -9,8 +9,3 @@ alias mv='mv -v -i'
 alias rm='rm -R -v'
 alias ls='/bin/ls -h -F'
 alias sudo='sudo -H'
-
-alias gfbn='git fbn'
-alias gbn='git bn'
-alias gt='git task'
-alias gtc='git task | tr -d "\n" | pbcopy'
