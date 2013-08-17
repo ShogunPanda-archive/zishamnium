@@ -1,6 +1,6 @@
 #/usr/bin/env ruby
 #
-# This file is part of zishamnium. Copyright (C) 2013 and above Shogun <shogun_panda@me.com>.
+# This file is part of zishamnium. Copyright (C) 2013 and above Shogun <shogun_panda@cowtech.it>.
 # Licensed under the MIT license, which can be found at http://www.opensource.org/licenses/mit-license.php.
 #
 
@@ -11,15 +11,13 @@ root = "#{home}/.zishamnium"
 ohmyzsh = "#{home}/.oh-my-zsh/"
 contents_directory = File.dirname(__FILE__)
 quiet = (ENV["ZISHAMNIUM_QUIET"] =~ /^(1|on|true|yes|t|y)$/i)
-
-
 external_scripts = {
 	"bashmarks" => ["71_bashmark", "https://raw.github.com/parroty/bashmarks/master/bashmarks.sh"],
 	"git-completion" => ["72_git_completion", "https://raw.github.com/git/git/master/contrib/completion/git-completion.bash"]
 }
 
 desc "Installs the environment."
-task :install do |task|
+task :install do
 	files = FileList["plugin.zsh", "theme.zsh-theme", "modules"]
 	FileUtils.mkdir_p(root, :verbose => !quiet)
 	FileUtils.mkdir_p("#{ohmyzsh}/custom/plugins/zishamnium/", :verbose => !quiet)
@@ -35,14 +33,14 @@ task :install do |task|
 end
 
 desc "Uninstalls the environment."
-task :uninstall do |task|
+task :uninstall do
 	FileUtils.rm_r(FileList[root, "#{ohmyzsh}/custom/plugins/zishamnium", "#{ohmyzsh}/themes/zishamnium.zsh-theme"], :verbose => !quiet)
 	puts "zishamnium plugin and theme have been installed. Disabling plugin and theme is left to you. Farewell! ;)"
 end
 
 namespace :external do
 	desc "Updates an external script."
-	task :update, :name do |task, args|
+	task :update, :name do |_, args|
 		script_arg = args[:name].to_s
 
 		raise RuntimeError.new("You have to specify the name of script to update. Valid scripts are: #{external_scripts.keys.join(", ")}.") if script_arg.strip.length == 0
@@ -59,7 +57,9 @@ end
 
 namespace :site do
 	desc "Updates site installer."
-	task :update_installer do |task|
+	task :update_installer do
+                system("git branch -D gh-pages")
+                system("git fetch")
 		system("git checkout gh-pages")
 		system("curl -s -o installer https://raw.github.com/ShogunPanda/zishamnium/master/installer && git commit -qam \"Updated site installer.\" && git push -q")
 		system("git checkout master")
