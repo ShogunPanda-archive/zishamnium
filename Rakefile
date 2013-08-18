@@ -62,6 +62,7 @@ namespace :site do
                 system("git fetch")
 		system("git checkout gh-pages")
 		system("curl -s -o installer https://raw.github.com/ShogunPanda/zishamnium/master/installer && git commit -qam \"Updated site installer.\" && git push -q")
+		system("git branch -D gh-pages")
 		system("git checkout master")
 	end
 end
