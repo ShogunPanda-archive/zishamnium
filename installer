@@ -5,7 +5,7 @@
 #
 
 if [ -z "$ZSH_VERSION" ]; then
-  echo "zishamnium works only for ZSH. For other shell you might consider shamnium."
+  echo "zishamnium works only for ZSH."
   return 1
 fi
 

@@ -4,4 +4,4 @@
 # Licensed under the MIT license, which can be found at http://www.opensource.org/licenses/mit-license.php.
 #
 
-export ZISHAMNIUM_VERSION="1.1.1"
+export ZISHAMNIUM_VERSION="1.1.2"

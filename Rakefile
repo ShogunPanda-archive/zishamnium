@@ -35,7 +35,7 @@ end
 desc "Uninstalls the environment."
 task :uninstall do
 	FileUtils.rm_r(FileList[root, "#{ohmyzsh}/custom/plugins/zishamnium", "#{ohmyzsh}/themes/zishamnium.zsh-theme"], :verbose => !quiet)
-	puts "zishamnium plugin and theme have been installed. Disabling plugin and theme is left to you. Farewell! ;)"
+	puts "zishamnium plugin and theme have been uninstalled. Disabling plugin and theme is left to you. Farewell! ;)"
 end
 
 namespace :external do

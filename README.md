@@ -1,4 +1,4 @@
-# shamnium
+# zishamnium
 
 Some useful shell extension for oh-my-zsh.
 
@@ -22,7 +22,7 @@ Just type the following in a shell and you're done!
 
 `curl -L http://sw.cow.tc/zishamnium/installer | zsh -s -- uninstall`
 
-## Contributing to shamnium
+## Contributing to zishamnium
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
