@@ -7,7 +7,6 @@ http://sw.cow.tc/zishamnium
 https://github.com/ShogunPanda/zishamnium
 
 [![Bitdeli Trend](https://d2weczhvl823v0.cloudfront.net/ShogunPanda/zishamnium/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-<iframe src="http://ghbtns.com/github-btn.html?user=ShogunPanda&repo=zishamnium&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="135" height="20"></iframe>
 
 ## Install
 
